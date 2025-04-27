@@ -13,8 +13,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Rosario:ital,wght@0,300..700;1,300..700&family=SUSE:wght@100..800&display=swap"
         rel="stylesheet">
-    <script src="three.r134.min.js"></script>
-    <script src="vanta.waves.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
     <title>autumn</title>
 
 </head>
@@ -44,15 +46,18 @@
         background-color: transparent;
     }
 
-    html, body {
+    html,
+    body {
         height: 100%;
         margin: 0;
         padding: 0;
-        overflow-y: scroll; 
+        overflow-y: scroll;
         scrollbar-width: none;
-        -ms-overflow-style: none; /* for Internet Explorer and Edge */
+        -ms-overflow-style: none;
+        /* for Internet Explorer and Edge */
     }
-    .header-section{
+
+    .header-section {
         height: 80vh;
         width: 100vw;
         display: flex;
@@ -62,11 +67,13 @@
         text-align: center;
 
     }
+
     .header-section h1 {
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1.5s ease-out forwards;
     }
+
     .header-section h6 {
         opacity: 0;
         transform: translateY(20px);
@@ -88,6 +95,7 @@
         .full-height-lg {
             height: 100vh;
         }
+
         .intro {
             display: flex;
             align-items: flex-start;
@@ -95,7 +103,7 @@
             margin-top: 100px;
         }
     }
-    
+
 
     .row-align {
         display: flex;
@@ -110,7 +118,16 @@
             flex-direction: row;
         }
     }
-
+    .animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s ease-out;
+    }
+    
+    .animate.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 
 <body>
@@ -119,15 +136,16 @@
             <a href="#!" class="brand-logo" style="color: black; font-family: 'Rosario', sans-serif;">Autumn</a>
         </div>
     </nav>
-<!-- Header -->
-    <section class="section container header-section">
+    <!-- Header -->
+    <section class="section container header-section animate">
         <h1 class="rosario-header">Introduction Autumn</h1>
         <h6 class="rosario-para">Payload Validation Automated - Just for you</h6>
     </section>
-<!-- Para -->
-<section class="section container header-section">
-    <h3 class="rosario-header">Autumn</h3>
-</section>
+    <!-- Para -->
+    <section class="section container header-section animate">
+        <h5 class="rosario-header">Autumn — Streamlining Payload Validation & Powering Smart Reports</h5>
+        <a href="#" class="btn-small black white-text">Contact Now</a>
+    </section>
 
     <!-- Footer Start -->
     <footer class="page-footer black" style="padding-top: 0;">
@@ -146,8 +164,21 @@
     </footer>
     <!-- Footer End -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+        
+            document.querySelectorAll('.animate').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>
